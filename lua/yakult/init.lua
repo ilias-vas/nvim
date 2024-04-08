@@ -14,9 +14,13 @@ Plug('mbbill/undotree')
 Plug('kdheepak/lazygit.nvim')
 Plug('m4xshen/autoclose.nvim')
 Plug('akinsho/toggleterm.nvim', {['tag'] = '*'})
-Plug('comfysage/evergarden')
 Plug('nvim-lualine/lualine.nvim')
 Plug('jiriks74/presence.nvim')
+
+-- Themes
+Plug('comfysage/evergarden')
+Plug('rebelot/kanagawa.nvim')
+Plug('Mofiqul/dracula.nvim')
 
 -- LSP Support
 Plug('neovim/nvim-lspconfig')
@@ -42,10 +46,21 @@ vim.call('plug#end')
 require 'evergarden'.setup {
     transparent_background = true
 }
-vim.cmd[[colorscheme evergarden]]
+
+require 'kanagawa'.setup {
+    theme = 'dragon',
+    transparent = true
+}
+
+require 'dracula'.setup {
+    transparent_bg = true
+}
+
+vim.cmd[[colorscheme dracula]]
 
 -- LSP SETTINGS
 local lsp_zero = require('lsp-zero')
+
 
 -- LSP Setup
 lsp_zero.on_attach(function(client, bufnr)
@@ -80,6 +95,7 @@ require('mason-lspconfig').setup({
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
+vim.api.nvim_set_hl(0, 'CmpItemAbbr', { bg = "NONE" })
 
 cmp.setup({
     preselect = 'item',
