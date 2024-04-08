@@ -60,7 +60,6 @@ vim.cmd[[colorscheme dracula]]
 -- LSP SETTINGS
 local lsp_zero = require('lsp-zero')
 
-
 -- LSP Setup
 lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
@@ -95,6 +94,8 @@ local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
 vim.api.nvim_set_hl(0, 'CmpItemAbbr', { bg = "NONE" })
+vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', {bg = "NONE"})
+vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', {bg = "NONE"})
 
 cmp.setup({
     preselect = 'item',
