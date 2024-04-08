@@ -16,6 +16,7 @@ Plug('m4xshen/autoclose.nvim')
 Plug('akinsho/toggleterm.nvim', {['tag'] = '*'})
 Plug('comfysage/evergarden')
 Plug('nvim-lualine/lualine.nvim')
+Plug('jiriks74/presence.nvim')
 
 -- LSP Support
 Plug('neovim/nvim-lspconfig')
