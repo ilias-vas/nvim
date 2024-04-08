@@ -48,7 +48,6 @@ require 'evergarden'.setup {
 }
 
 require 'kanagawa'.setup {
-    theme = 'dragon',
     transparent = true
 }
 
@@ -83,7 +82,7 @@ require('mason-lspconfig').setup({
             settings = {
                 Lua = {
                     diagnositcs = {
-                        globals = { "vim", "capabiliti1C1C1Ces" }
+                        globals = { "vim" }
                     }
                 }
             }
