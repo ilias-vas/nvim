@@ -48,14 +48,23 @@ require 'evergarden'.setup {
 }
 
 require 'kanagawa'.setup {
-    transparent = true
+    transparent = true,
+    colors = {
+        theme = {
+            all = {
+                ui = {
+                    bg_gutter = "none"
+                }
+            }
+        }
+    }
 }
 
 require 'dracula'.setup {
     transparent_bg = true
 }
 
-vim.cmd[[colorscheme dracula]]
+vim.cmd[[colorscheme kanagawa]]
 
 -- LSP SETTINGS
 local lsp_zero = require('lsp-zero')
@@ -93,9 +102,11 @@ require('mason-lspconfig').setup({
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
+-- Making CMP Window transparent
 vim.api.nvim_set_hl(0, 'CmpItemAbbr', { bg = "NONE" })
 vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', {bg = "NONE"})
 vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', {bg = "NONE"})
+vim.api.nvim_set_hl(0, 'FloatBorder', {link = 'Normal'})
 
 cmp.setup({
     preselect = 'item',
