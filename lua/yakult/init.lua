@@ -16,11 +16,14 @@ Plug('m4xshen/autoclose.nvim')
 Plug('akinsho/toggleterm.nvim', {['tag'] = '*'})
 Plug('nvim-lualine/lualine.nvim')
 Plug('jiriks74/presence.nvim')
+Plug('windwp/nvim-ts-autotag')
+Plug('ThePrimeagen/harpoon', {['branch'] = 'harpoon2'})
 
 -- Themes
 Plug('comfysage/evergarden')
 Plug('rebelot/kanagawa.nvim')
 Plug('Mofiqul/dracula.nvim')
+Plug('folke/tokyonight.nvim')
 
 -- LSP Support
 Plug('neovim/nvim-lspconfig')
@@ -64,7 +67,12 @@ require 'dracula'.setup {
     transparent_bg = true
 }
 
-vim.cmd[[colorscheme kanagawa]]
+require('tokyonight').setup({
+    style = 'storm',
+    transparent = true
+})
+
+vim.cmd[[colorscheme tokyonight]]
 
 -- LSP SETTINGS
 local lsp_zero = require('lsp-zero')
