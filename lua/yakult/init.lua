@@ -68,11 +68,11 @@ require 'dracula'.setup {
 }
 
 require('tokyonight').setup({
-    style = 'storm',
+    style = 'moon',
     transparent = true
 })
 
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd[[colorscheme kanagawa]]
 
 -- LSP SETTINGS
 local lsp_zero = require('lsp-zero')
@@ -88,7 +88,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
   -- Replace the language servers listed here 
   -- with the ones you want to install
-  ensure_installed = {'tsserver', 'rust_analyzer', 'jdtls', 'lua_ls', 'jedi_language_server', 'bashls', 'arduino_language_server', 'marksman'},
+  ensure_installed = {'tsserver', 'rust_analyzer', 'jdtls', 'lua_ls', 'jedi_language_server', 'bashls', 'arduino_language_server', 'marksman', 'html', 'cssls', 'emmet_ls'},
   handlers = {
     lsp_zero.default_setup,
 
