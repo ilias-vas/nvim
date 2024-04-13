@@ -25,7 +25,9 @@ Plug('rebelot/kanagawa.nvim')
 Plug('Mofiqul/dracula.nvim')
 Plug('folke/tokyonight.nvim')
 Plug('nyoom-engineering/oxocarbon.nvim')
-Plug 'glepnir/zephyr-nvim'
+Plug('glepnir/zephyr-nvim')
+Plug('Th3Whit3Wolf/space-nvim')
+Plug('neanias/everforest-nvim', {['branch'] = 'main'})
 
 -- LSP Support
 Plug('neovim/nvim-lspconfig')
@@ -74,7 +76,13 @@ require('tokyonight').setup({
     transparent = true
 })
 
-vim.cmd[[colorscheme kanagawa]]
+vim.g.space_nvim_transparent_bg = true
+
+require('everforest').setup({
+    transparent_background_level = 2
+})
+
+vim.cmd[[colorscheme everforest]]
 
 -- LSP SETTINGS
 local lsp_zero = require('lsp-zero')
