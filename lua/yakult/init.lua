@@ -24,6 +24,8 @@ Plug('comfysage/evergarden')
 Plug('rebelot/kanagawa.nvim')
 Plug('Mofiqul/dracula.nvim')
 Plug('folke/tokyonight.nvim')
+Plug('nyoom-engineering/oxocarbon.nvim')
+Plug 'glepnir/zephyr-nvim'
 
 -- LSP Support
 Plug('neovim/nvim-lspconfig')
