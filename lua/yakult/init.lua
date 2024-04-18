@@ -18,8 +18,9 @@ Plug('nvim-lualine/lualine.nvim')
 Plug('jiriks74/presence.nvim')
 Plug('windwp/nvim-ts-autotag')
 Plug('ThePrimeagen/harpoon', {['branch'] = 'harpoon2'})
+Plug('max397574/better-escape.nvim')
 
--- Themes
+--- Themes
 Plug('comfysage/evergarden')
 Plug('rebelot/kanagawa.nvim')
 Plug('Mofiqul/dracula.nvim')
@@ -28,6 +29,7 @@ Plug('nyoom-engineering/oxocarbon.nvim')
 Plug('glepnir/zephyr-nvim')
 Plug('Th3Whit3Wolf/space-nvim')
 Plug('neanias/everforest-nvim', {['branch'] = 'main'})
+Plug('NStefan002/screenkey.nvim')
 
 -- LSP Support
 Plug('neovim/nvim-lspconfig')
