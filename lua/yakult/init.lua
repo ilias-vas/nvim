@@ -19,6 +19,12 @@ Plug('jiriks74/presence.nvim')
 Plug('windwp/nvim-ts-autotag')
 Plug('ThePrimeagen/harpoon', {['branch'] = 'harpoon2'})
 Plug('max397574/better-escape.nvim')
+Plug('mfussenegger/nvim-dap')
+Plug('jay-babu/mason-nvim-dap.nvim')
+Plug('rcarriga/nvim-dap-ui')
+Plug('lervag/vimtex')
+Plug('HoNamDuong/hybrid.nvim')
+Plug('use { "HoNamDuong/hybrid.nvim" }')
 
 --- Themes
 Plug('comfysage/evergarden')
@@ -84,7 +90,11 @@ require('everforest').setup({
     transparent_background_level = 2
 })
 
-vim.cmd[[colorscheme everforest]]
+require('hybrid').setup({
+    transparent = 'true'
+})
+
+vim.cmd[[colorscheme hybrid]]
 
 -- LSP SETTINGS
 local lsp_zero = require('lsp-zero')
@@ -96,11 +106,17 @@ lsp_zero.on_attach(function(client, bufnr)
   lsp_zero.default_keymaps({buffer = bufnr})
 end)
 
-require('mason').setup({})
+require('mason').setup({
+    opts = {
+        ensure_installed = {
+            "clang-format",
+        }
+    }
+})
 require('mason-lspconfig').setup({
   -- Replace the language servers listed here 
   -- with the ones you want to install
-  ensure_installed = {'tsserver', 'rust_analyzer', 'jdtls', 'lua_ls', 'jedi_language_server', 'bashls', 'arduino_language_server', 'marksman', 'html', 'cssls', 'emmet_ls'},
+  ensure_installed = {'tsserver', 'rust_analyzer', 'jdtls', 'lua_ls', 'jedi_language_server', 'bashls', 'arduino_language_server', 'marksman', 'html', 'cssls', 'emmet_ls',},
   handlers = {
     lsp_zero.default_setup,
 
@@ -119,8 +135,14 @@ require('mason-lspconfig').setup({
   }
 })
 
+require('mason-nvim-dap').setup({
+    event = "VeryLazy",
+})
+
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
+
+    
 
 -- Making CMP Window transparent
 vim.api.nvim_set_hl(0, 'CmpItemAbbr', { bg = "NONE" })
