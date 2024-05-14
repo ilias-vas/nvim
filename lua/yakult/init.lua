@@ -24,7 +24,7 @@ Plug('jay-babu/mason-nvim-dap.nvim')
 Plug('rcarriga/nvim-dap-ui')
 Plug('lervag/vimtex')
 Plug('HoNamDuong/hybrid.nvim')
-Plug('use { "HoNamDuong/hybrid.nvim" }')
+Plug('zaldih/themery.nvim')
 
 --- Themes
 Plug('comfysage/evergarden')
@@ -36,7 +36,7 @@ Plug('glepnir/zephyr-nvim')
 Plug('Th3Whit3Wolf/space-nvim')
 Plug('neanias/everforest-nvim', {['branch'] = 'main'})
 Plug('NStefan002/screenkey.nvim')
-
+Plug('ellisonleao/gruvbox.nvim')
 -- LSP Support
 Plug('neovim/nvim-lspconfig')
 Plug('williamboman/mason.nvim')
@@ -94,7 +94,15 @@ require('hybrid').setup({
     transparent = 'true'
 })
 
-vim.cmd[[colorscheme hybrid]]
+require('gruvbox').setup({
+    transparent_mode = true
+})
+
+-- Themery block
+-- This block will be replaced by Themery.
+vim.cmd("colorscheme hybrid")
+vim.g.theme_id = 1
+-- end themery block
 
 -- LSP SETTINGS
 local lsp_zero = require('lsp-zero')
@@ -141,8 +149,6 @@ require('mason-nvim-dap').setup({
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
-
-    
 
 -- Making CMP Window transparent
 vim.api.nvim_set_hl(0, 'CmpItemAbbr', { bg = "NONE" })
