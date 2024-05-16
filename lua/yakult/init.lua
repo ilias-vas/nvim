@@ -37,6 +37,8 @@ Plug('Th3Whit3Wolf/space-nvim')
 Plug('neanias/everforest-nvim', {['branch'] = 'main'})
 Plug('NStefan002/screenkey.nvim')
 Plug('ellisonleao/gruvbox.nvim')
+Plug('aktersnurra/no-clown-fiesta.nvim')
+
 -- LSP Support
 Plug('neovim/nvim-lspconfig')
 Plug('williamboman/mason.nvim')
@@ -98,9 +100,13 @@ require('gruvbox').setup({
     transparent_mode = true
 })
 
+require("no-clown-fiesta").setup({
+    transparent = true
+})
+
 -- Themery block
 -- This block will be replaced by Themery.
-vim.cmd("colorscheme hybrid")
+vim.cmd("colorscheme no-clown-fiesta")
 vim.g.theme_id = 1
 -- end themery block
 

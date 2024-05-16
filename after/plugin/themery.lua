@@ -1,5 +1,5 @@
 require("themery").setup({
-    themes = {"hybrid", "gruvbox", "dracula", "tokyonight", "evergarden"},
+    themes = {"no-clown-fiesta", "hybrid", "gruvbox", "dracula", "tokyonight", "evergarden", "kanagawa"},
     themeConfigFile = "~/.config/nvim/lua/yakult/init.lua",
     livePreview = true
 })
