@@ -35,7 +35,6 @@ Plug('nyoom-engineering/oxocarbon.nvim')
 Plug('glepnir/zephyr-nvim')
 Plug('Th3Whit3Wolf/space-nvim')
 Plug('neanias/everforest-nvim', {['branch'] = 'main'})
-Plug('NStefan002/screenkey.nvim')
 Plug('ellisonleao/gruvbox.nvim')
 Plug('aktersnurra/no-clown-fiesta.nvim')
 
