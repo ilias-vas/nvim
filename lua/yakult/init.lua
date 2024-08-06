@@ -2,6 +2,7 @@ require("yakult.remap")
 require("yakult.set")
 
 local vim = vim
+
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
@@ -19,13 +20,17 @@ Plug('nvim-lualine/lualine.nvim')
 Plug('jiriks74/presence.nvim')
 Plug('windwp/nvim-ts-autotag')
 Plug('ThePrimeagen/harpoon', {['branch'] = 'harpoon2'})
-Plug('max397574/better-escape.nvim')
-Plug('mfussenegger/nvim-dap')
-Plug('jay-babu/mason-nvim-dap.nvim')
-Plug('rcarriga/nvim-dap-ui')
 Plug('lervag/vimtex')
 Plug('HoNamDuong/hybrid.nvim')
-Plug('zaldih/themery.nvim')
+Plug('epwalsh/obsidian.nvim')
+Plug('nvim-tree/nvim-web-devicons')
+Plug('gelguy/wilder.nvim')
+
+-- DAP Debugging
+Plug('mfussenegger/nvim-dap')
+Plug('nvim-neotest/nvim-nio')
+Plug('jay-babu/mason-nvim-dap.nvim')
+Plug('rcarriga/nvim-dap-ui')
 
 --- Themes
 Plug('comfysage/evergarden')
@@ -44,6 +49,7 @@ Plug('neovim/nvim-lspconfig')
 Plug('williamboman/mason.nvim')
 Plug('williamboman/mason-lspconfig.nvim')
 Plug('VonHeikemen/lsp-zero.nvim', {["branch"] = 'v3.x'})
+Plug('jose-elias-alvarez/null-ls.nvim')
 
 -- Autocompletion
 Plug('hrsh7th/nvim-cmp')
