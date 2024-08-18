@@ -26,6 +26,16 @@ Plug('epwalsh/obsidian.nvim')
 Plug('nvim-tree/nvim-web-devicons')
 Plug('gelguy/wilder.nvim')
 
+-- Java Setup
+Plug('nvim-java/lua-async-await')
+Plug('nvim-java/nvim-java-refactor')
+Plug('nvim-java/nvim-java-core')
+Plug('nvim-java/nvim-java-test')
+Plug('nvim-java/nvim-java-dap')
+Plug('JavaHello/spring-boot.nvim')
+Plug('MunifTanjim/nui.nvim')
+Plug('nvim-java/nvim-java')
+
 -- DAP Debugging
 Plug('mfussenegger/nvim-dap')
 Plug('nvim-neotest/nvim-nio')
@@ -136,7 +146,7 @@ require('mason').setup({
 require('mason-lspconfig').setup({
   -- Replace the language servers listed here 
   -- with the ones you want to install
-  ensure_installed = {'tsserver', 'rust_analyzer', 'jdtls', 'lua_ls', 'jedi_language_server', 'bashls', 'arduino_language_server', 'marksman', 'html', 'cssls', 'emmet_ls',},
+  ensure_installed = {'tsserver', 'jdtls', 'rust_analyzer', 'lua_ls', 'jedi_language_server', 'bashls', 'arduino_language_server', 'marksman', 'html', 'cssls', 'emmet_ls',},
   handlers = {
     lsp_zero.default_setup,
 
