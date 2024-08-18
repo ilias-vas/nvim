@@ -1,12 +1,10 @@
 require("yakult.remap")
 require("yakult.set")
-
 local vim = vim
 
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
-
 
 -- General Plugins
 Plug('nvim-lua/plenary.nvim')
