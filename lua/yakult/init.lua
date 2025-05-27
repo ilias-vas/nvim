@@ -20,7 +20,6 @@ Plug('windwp/nvim-ts-autotag')
 Plug('ThePrimeagen/harpoon', {['branch'] = 'harpoon2'})
 Plug('lervag/vimtex')
 Plug('HoNamDuong/hybrid.nvim')
-Plug('epwalsh/obsidian.nvim')
 Plug('nvim-tree/nvim-web-devicons')
 Plug('gelguy/wilder.nvim')
 
@@ -136,24 +135,33 @@ require('mason').setup({
         }
     }
 })
+
 require('mason-lspconfig').setup({
-  -- Replace the language servers listed here 
-  -- with the ones you want to install
-  ensure_installed = {'tsserver', 'jdtls', 'rust_analyzer', 'lua_ls', 'jedi_language_server', 'bashls', 'arduino_language_server', 'marksman', 'html', 'cssls', 'emmet_ls',},
+  ensure_installed = {
+    'tsserver', 'jdtls', 'rust_analyzer', 'lua_ls', 'jedi_language_server',
+    'bashls', 'arduino_language_server', 'marksman', 'html', 'cssls', 'emmet_ls',
+  },
   handlers = {
     lsp_zero.default_setup,
 
     ["lua_ls"] = function()
-        local lspconfig = require("lspconfig")
-        lspconfig.lua_ls.setup {
-            settings = {
-                Lua = {
-                    diagnositcs = {
-                        globals = { "vim" }
-                    }
-                }
+      local lspconfig = require("lspconfig")
+      lspconfig.lua_ls.setup {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" }
             }
+          }
         }
+      }
+    end,
+
+    ["jedi_language_server"] = function()
+      local lspconfig = require("lspconfig")
+      lspconfig.jedi_language_server.setup {
+        cmd = { "/home/ilias/.local/bin/jedi-language-server" }
+      }
     end,
   }
 })
