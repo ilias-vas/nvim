@@ -57,7 +57,7 @@ Plug('neovim/nvim-lspconfig')
 Plug('williamboman/mason.nvim')
 Plug('williamboman/mason-lspconfig.nvim')
 Plug('VonHeikemen/lsp-zero.nvim', {["branch"] = 'v3.x'})
-Plug('jose-elias-alvarez/null-ls.nvim')
+Plug('nvimtools/none-ls.nvim')
 
 -- Autocompletion
 Plug('hrsh7th/nvim-cmp')
@@ -138,7 +138,7 @@ require('mason').setup({
 
 require('mason-lspconfig').setup({
   ensure_installed = {
-    'tsserver', 'jdtls', 'rust_analyzer', 'lua_ls', 'jedi_language_server',
+    'jdtls', 'rust_analyzer', 'lua_ls', 'jedi_language_server',
     'bashls', 'arduino_language_server', 'marksman', 'html', 'cssls', 'emmet_ls',
   },
   handlers = {
