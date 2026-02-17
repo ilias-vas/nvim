@@ -9,8 +9,8 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 -- General Plugins
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
-Plug('nvim-treesitter/nvim-treesitter', {["do"] = ':TSUpdate'})
 Plug('mbbill/undotree')
+Plug('nvim-treesitter/nvim-treesitter', {["do"] = ':TSUpdate'})
 Plug('kdheepak/lazygit.nvim')
 Plug('m4xshen/autoclose.nvim')
 Plug('akinsho/toggleterm.nvim', {['tag'] = '*'})
@@ -20,9 +20,16 @@ Plug('windwp/nvim-ts-autotag')
 Plug('ThePrimeagen/harpoon', {['branch'] = 'harpoon2'})
 Plug('lervag/vimtex')
 Plug('HoNamDuong/hybrid.nvim')
-Plug('epwalsh/obsidian.nvim')
 Plug('nvim-tree/nvim-web-devicons')
 Plug('gelguy/wilder.nvim')
+Plug('kkharji/sqlite.lua')
+Plug('numToStr/Comment.nvim')
+Plug('max397574/better-escape.nvim')
+Plug('kawre/leetcode.nvim')
+Plug('ferdinandrau/lavish.nvim')
+Plug('MunifTanjim/nui.nvim')
+Plug('xeluxee/competitest.nvim')
+Plug('mikavilpas/yazi.nvim')
 
 -- Java Setup
 Plug('nvim-java/lua-async-await')
@@ -50,23 +57,20 @@ Plug('glepnir/zephyr-nvim')
 Plug('Th3Whit3Wolf/space-nvim')
 Plug('neanias/everforest-nvim', {['branch'] = 'main'})
 Plug('ellisonleao/gruvbox.nvim')
+Plug('sainnhe/gruvbox-material')
 Plug('aktersnurra/no-clown-fiesta.nvim')
 Plug('zaldih/themery.nvim')
+Plug('wtfox/jellybeans.nvim')
 
 -- LSP Support
 Plug('neovim/nvim-lspconfig')
 Plug('williamboman/mason.nvim')
 Plug('williamboman/mason-lspconfig.nvim')
 Plug('VonHeikemen/lsp-zero.nvim', {["branch"] = 'v3.x'})
-Plug('jose-elias-alvarez/null-ls.nvim')
+Plug('nvimtools/none-ls.nvim')
 
 -- Autocompletion
-Plug('hrsh7th/nvim-cmp')
-Plug('hrsh7th/cmp-buffer')
-Plug('hrsh7th/cmp-path')
-Plug('saadparwaiz1/cmp_luasnip')
-Plug('hrsh7th/cmp-nvim-lsp')
-Plug('hrsh7th/cmp-nvim-lua')
+Plug('saghen/blink.cmp', { ['tag'] = 'v1.*' })
 
 -- Snippets
 Plug('L3MON4D3/LuaSnip')
@@ -119,6 +123,15 @@ require("no-clown-fiesta").setup({
     transparent = true
 })
 
+require("lavish").setup({
+    style = {
+        transparent = true,
+    },
+})
+
+-- CP Testing
+require('competitest').setup() -- to use default configuration
+
 -- LSP SETTINGS
 local lsp_zero = require('lsp-zero')
 
@@ -162,42 +175,26 @@ require('mason-nvim-dap').setup({
     event = "VeryLazy",
 })
 
-local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+-- snippets and autocomplete
+require('blink.cmp').setup({
+  keymap = { preset = 'enter' },
 
--- Making CMP Window transparent
-vim.api.nvim_set_hl(0, 'CmpItemAbbr', { bg = "NONE" })
-vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', {bg = "NONE"})
-vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', {bg = "NONE"})
-vim.api.nvim_set_hl(0, 'FloatBorder', {link = 'Normal'})
-
-cmp.setup({
-    preselect = 'item',
-    completion = {
-        completeopt = 'menu,menuone,noinsert',
-    },
-    window = {
-        documentation = cmp.config.window.bordered(),
-        completion = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-        -- `Enter` key to confirm completion
-        ['<CR>'] = cmp.mapping.confirm({select = false}),
-
-        -- Ctrl+Space to trigger completion menu
-        ['<C-Space>'] = cmp.mapping.complete(),
-
-        -- Navigate between snippet placeholder
-        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-
-        -- Scroll up and down in the completion documentation
-        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),
-  }),
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
+  appearance = {
+    nerd_font_variant = 'mono'
   },
+
+  completion = {
+    menu = {
+        border = "single"
+    },
+    documentation = { window = { border = "rounded" }, auto_show = false }
+  },
+
+  sources = {
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
+  },
+
+  fuzzy = {
+    implementation = "prefer_rust_with_warning"
+  }
 })

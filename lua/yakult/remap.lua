@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "jj", "<ESC>", { silent = true })
+vim.keymap.set("n", "<leader>h", "<cmd>YankBank<CR>", { noremap = true })
 
 vim.o.cmdheight=0
 
@@ -24,6 +25,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 local M = {}
+
 
 M.dap = {
     plugin = true,
