@@ -10,14 +10,14 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
 Plug('mbbill/undotree')
-Plug('nvim-treesitter/nvim-treesitter', {["do"] = ':TSUpdate'})
+Plug('nvim-treesitter/nvim-treesitter', { ["do"] = ':TSUpdate' })
 Plug('kdheepak/lazygit.nvim')
 Plug('m4xshen/autoclose.nvim')
-Plug('akinsho/toggleterm.nvim', {['tag'] = '*'})
+Plug('akinsho/toggleterm.nvim', { ['tag'] = '*' })
 Plug('nvim-lualine/lualine.nvim')
 Plug('jiriks74/presence.nvim')
 Plug('windwp/nvim-ts-autotag')
-Plug('ThePrimeagen/harpoon', {['branch'] = 'harpoon2'})
+Plug('ThePrimeagen/harpoon', { ['branch'] = 'harpoon2' })
 Plug('lervag/vimtex')
 Plug('HoNamDuong/hybrid.nvim')
 Plug('nvim-tree/nvim-web-devicons')
@@ -25,11 +25,14 @@ Plug('gelguy/wilder.nvim')
 Plug('kkharji/sqlite.lua')
 Plug('numToStr/Comment.nvim')
 Plug('max397574/better-escape.nvim')
-Plug('kawre/leetcode.nvim')
 Plug('ferdinandrau/lavish.nvim')
 Plug('MunifTanjim/nui.nvim')
 Plug('xeluxee/competitest.nvim')
 Plug('mikavilpas/yazi.nvim')
+Plug('stevearc/conform.nvim')
+Plug('MeanderingProgrammer/render-markdown.nvim')
+Plug('kawre/leetcode.nvim')
+Plug('rachartier/tiny-inline-diagnostic.nvim')
 
 -- Java Setup
 Plug('nvim-java/lua-async-await')
@@ -55,18 +58,19 @@ Plug('folke/tokyonight.nvim')
 Plug('nyoom-engineering/oxocarbon.nvim')
 Plug('glepnir/zephyr-nvim')
 Plug('Th3Whit3Wolf/space-nvim')
-Plug('neanias/everforest-nvim', {['branch'] = 'main'})
+Plug('neanias/everforest-nvim', { ['branch'] = 'main' })
 Plug('ellisonleao/gruvbox.nvim')
 Plug('sainnhe/gruvbox-material')
 Plug('aktersnurra/no-clown-fiesta.nvim')
 Plug('zaldih/themery.nvim')
 Plug('wtfox/jellybeans.nvim')
+Plug('webhooked/kanso.nvim')
 
 -- LSP Support
 Plug('neovim/nvim-lspconfig')
 Plug('williamboman/mason.nvim')
 Plug('williamboman/mason-lspconfig.nvim')
-Plug('VonHeikemen/lsp-zero.nvim', {["branch"] = 'v3.x'})
+Plug('VonHeikemen/lsp-zero.nvim', { ["branch"] = 'v3.x' })
 Plug('nvimtools/none-ls.nvim')
 
 -- Autocompletion
@@ -129,6 +133,14 @@ require("lavish").setup({
     },
 })
 
+require('kanso').setup({
+    transparent = true,
+    italics = false,
+    background = {
+        dark = "zen",
+    }
+})
+
 -- CP Testing
 require('competitest').setup() -- to use default configuration
 
@@ -137,9 +149,9 @@ local lsp_zero = require('lsp-zero')
 
 -- LSP Setup
 lsp_zero.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp_zero.default_keymaps({buffer = bufnr})
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
 require('mason').setup({
@@ -150,25 +162,25 @@ require('mason').setup({
     }
 })
 require('mason-lspconfig').setup({
-  -- Replace the language servers listed here 
-  -- with the ones you want to install
-  ensure_installed = {'tsserver', 'jdtls', 'rust_analyzer', 'lua_ls', 'jedi_language_server', 'bashls', 'arduino_language_server', 'marksman', 'html', 'cssls', 'emmet_ls',},
-  handlers = {
-    lsp_zero.default_setup,
+    -- Replace the language servers listed here
+    -- with the ones you want to install
+    ensure_installed = { 'clangd', 'jdtls', 'rust_analyzer', 'lua_ls', 'jedi_language_server', 'bashls', 'arduino_language_server', 'marksman', 'html', 'cssls', 'emmet_ls', },
+    handlers = {
+        lsp_zero.default_setup,
 
-    ["lua_ls"] = function()
-        local lspconfig = require("lspconfig")
-        lspconfig.lua_ls.setup {
-            settings = {
-                Lua = {
-                    diagnositcs = {
-                        globals = { "vim" }
+        ["lua_ls"] = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.lua_ls.setup {
+                settings = {
+                    Lua = {
+                        diagnositcs = {
+                            globals = { "vim" }
+                        }
                     }
                 }
             }
-        }
-    end,
-  }
+        end,
+    }
 })
 
 require('mason-nvim-dap').setup({
@@ -177,24 +189,30 @@ require('mason-nvim-dap').setup({
 
 -- snippets and autocomplete
 require('blink.cmp').setup({
-  keymap = { preset = 'enter' },
+    keymap = { preset = 'enter' },
 
-  appearance = {
-    nerd_font_variant = 'mono'
-  },
-
-  completion = {
-    menu = {
-        border = "single"
+    appearance = {
+        nerd_font_variant = 'mono'
     },
-    documentation = { window = { border = "rounded" }, auto_show = false }
-  },
 
-  sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
-  },
+    completion = {
+        menu = {
+            border = "single"
+        },
+        documentation = { window = { border = "rounded" }, auto_show = false }
+    },
 
-  fuzzy = {
-    implementation = "prefer_rust_with_warning"
-  }
+    sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
+
+    fuzzy = {
+        implementation = "prefer_rust_with_warning"
+    }
 })
+
+require('render-markdown').enable()
+
+vim.keymap.set("n", "<leader>-", function()
+    require("yazi").yazi()
+end)

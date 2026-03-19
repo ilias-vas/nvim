@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 toggleterm.setup {
-    size = 80,
+    size = 65,
     open_mapping = [[<c-\>]],
     hide_numbers = true,
     shade_filetypes = {},
@@ -13,7 +13,7 @@ toggleterm.setup {
     start_in_insert = true,
     insert_mappings = true,
     persist_size = true,
-    direction = "float",
+    direction = "vertical",
     close_on_exit = false,
     shell = vim.o.shell,
     float_opts = {
@@ -30,11 +30,11 @@ local keymap = vim.keymap.set
 local s_opts = { silent = true }
 keymap("t", "<esc>", [[<C-\><C-n>]], s_opts)
 
-local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local Terminal = require('toggleterm.terminal').Terminal
+local lazygit  = Terminal:new({ cmd = "lazygit", hidden = true })
 
 function _lazygit_toggle()
-  lazygit:toggle()
+    lazygit:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
